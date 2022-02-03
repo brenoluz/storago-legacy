@@ -30,8 +30,15 @@ module.exports = storago;;
   Entry.prototype._key = function(){
 
     let key_column = this._TABLE._key;
-    let key = this[key_column];
-
+    let key = null;
+    if(!!this._DATA){
+        key = this._DATA[key_column];
+    }
+    
+    if(!key){
+        key = this[key_column];
+    }
+    
     if(!key) return null;
     return key;
   }
